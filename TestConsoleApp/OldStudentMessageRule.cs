@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestConsoleApp
 {
-    public class NewStudentMessageRule : IRule<Student>
+    public class OldStudentMessageRule : IRule<Student>
     {
         public int Priority { get; private set; }
 
@@ -17,7 +17,7 @@ namespace TestConsoleApp
 
         public object Result { get; private set; }
 
-        public NewStudentMessageRule(Student context, int priority)
+        public OldStudentMessageRule(Student context, int priority)
         {
             Context = context;
             Priority = priority;
@@ -32,9 +32,9 @@ namespace TestConsoleApp
             {
                 string message = "";
                 var dateTimeNow = DateTime.Now;
-                if (Context.RegistrationDate.AddDays(2) >= dateTimeNow)
+                if (Context.RegistrationDate.AddYears(4) <= dateTimeNow)
                 {
-                    message = "Welcome";
+                    message = "We don't forget you.";
                 }
 
                 Result = message;
@@ -57,7 +57,7 @@ namespace TestConsoleApp
             {
                 State = RuleState.NotRunable;
             }
-            
+
             return shouldRun;
         }
     }

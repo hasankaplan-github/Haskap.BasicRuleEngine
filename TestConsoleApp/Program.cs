@@ -17,16 +17,25 @@ namespace TestConsoleApp
             };
 
             var newStudentMessageRule = new NewStudentMessageRule(student, 1);
+            var oldStudentMessageRule = new OldStudentMessageRule(student, 2);
 
-            Console.WriteLine(newStudentMessageRule.State);
+            var rules = new IRule<Student>[] 
+            { 
+                newStudentMessageRule, 
+                oldStudentMessageRule 
+            };
 
-            if (newStudentMessageRule.ShouldRun())
+            var ruleEngine = new RuleEngine();
+            ruleEngine.Run(rules);
+
+            foreach (var rule in rules)
             {
-                newStudentMessageRule.Run();
-                Console.WriteLine(newStudentMessageRule.State);
-                if (newStudentMessageRule.State == RuleState.Completed)
+                Console.WriteLine(rule.GetType());
+                Console.WriteLine(rule.State);
+
+                if (rule.State == RuleState.Completed)
                 {
-                    Console.WriteLine(newStudentMessageRule.Result);
+                    Console.WriteLine(rule.Result);
                 }
             }
         }

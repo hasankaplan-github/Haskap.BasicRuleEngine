@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Haskap.BasicRuleEngine
 {
-    public interface IRule<TContext, TResult>
+    public interface IRule<TContext>
     {
         int Priority { get; }
         TContext Context { get; }
         RuleState State { get; }
-        TResult Result { get; }
+        object Result { get; }
 
 
         bool ShouldRun();
-        TResult Run();
+        object Run();
     }
 }
