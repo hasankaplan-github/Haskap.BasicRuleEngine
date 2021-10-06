@@ -12,7 +12,7 @@ namespace TestConsoleApp
             var student = new Student
             {
                 Id = Guid.NewGuid(),
-                DateOfBirth = new DateTime(1984, 1, 1),
+                DateOfBirth = new DateTime(1984, 10, 6),
                 FirstName = "Hasan",
                 LastName = "Kaplan",
                 RegistrationDate = new DateTime(2010, 10, 5)
@@ -21,7 +21,8 @@ namespace TestConsoleApp
             var rules = new IRule<Student>[]
             {
                 new NewStudentMessageRule(student, 1),
-                new OldStudentMessageRule(student, 2)
+                new OldStudentMessageRule(student, 2),
+                new BirthdayMessageRule(student, 1)
             };
 
             var ruleEngine = new RuleEngine();
