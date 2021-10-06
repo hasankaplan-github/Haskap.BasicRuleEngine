@@ -30,15 +30,17 @@ namespace TestConsoleApp
 
             try
             {
-                string message = "";
                 var dateTimeNow = DateTime.Now;
                 if (Context.RegistrationDate.AddDays(2) >= dateTimeNow)
                 {
-                    message = "Welcome";
+                    Result = "Welcome";
+                    State = RuleState.Completed;
                 }
-
-                Result = message;
-                State = RuleState.Completed;
+                else
+                {
+                    Result = null;
+                    State = RuleState.Incomplete;
+                }
             }
             catch (Exception)
             {

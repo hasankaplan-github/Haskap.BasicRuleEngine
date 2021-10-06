@@ -1,5 +1,7 @@
 ﻿using Haskap.BasicRuleEngine;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TestConsoleApp
 {
@@ -13,30 +15,23 @@ namespace TestConsoleApp
                 DateOfBirth = new DateTime(1984, 1, 1),
                 FirstName = "Hasan",
                 LastName = "Kaplan",
-                RegistrationDate = new DateTime(2021, 10, 5)
+                RegistrationDate = new DateTime(2010, 10, 5)
             };
 
-            var newStudentMessageRule = new NewStudentMessageRule(student, 1);
-            var oldStudentMessageRule = new OldStudentMessageRule(student, 2);
-
-            var rules = new IRule<Student>[] 
-            { 
-                newStudentMessageRule, 
-                oldStudentMessageRule 
+            var rules = new IRule<Student>[]
+            {
+                new NewStudentMessageRule(student, 1),
+                new OldStudentMessageRule(student, 2)
             };
 
             var ruleEngine = new RuleEngine();
             ruleEngine.Run(rules);
 
-            foreach (var rule in rules)
+            foreach (var rule in rules.Where(x => x.State == RuleState.Completed))
             {
                 Console.WriteLine(rule.GetType());
                 Console.WriteLine(rule.State);
-
-                if (rule.State == RuleState.Completed)
-                {
-                    Console.WriteLine(rule.Result);
-                }
+                Console.WriteLine(rule.Result);
             }
         }
     }

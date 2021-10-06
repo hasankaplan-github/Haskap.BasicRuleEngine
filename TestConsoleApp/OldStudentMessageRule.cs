@@ -30,15 +30,17 @@ namespace TestConsoleApp
 
             try
             {
-                string message = "";
                 var dateTimeNow = DateTime.Now;
                 if (Context.RegistrationDate.AddYears(4) <= dateTimeNow)
                 {
-                    message = "We don't forget you.";
+                    Result = "We don't forget you.";
+                    State = RuleState.Completed;
                 }
-
-                Result = message;
-                State = RuleState.Completed;
+                else
+                {
+                    Result = null;
+                    State = RuleState.Incomplete;
+                }
             }
             catch (Exception)
             {
