@@ -24,7 +24,7 @@ namespace TestConsoleApp
             {
                 newStudentMessageRule.Run();
                 Console.WriteLine(newStudentMessageRule.State);
-                if (newStudentMessageRule.State == RuleState.CompletedSuccessfuly)
+                if (newStudentMessageRule.State == RuleState.Completed)
                 {
                     Console.WriteLine(newStudentMessageRule.Result);
                 }

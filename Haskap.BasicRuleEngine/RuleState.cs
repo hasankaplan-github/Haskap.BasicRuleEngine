@@ -12,6 +12,6 @@ namespace Haskap.BasicRuleEngine
         InProgress,
         NotRunable,
         Failed,
-        CompletedSuccessfuly
+        Completed
     }
 }

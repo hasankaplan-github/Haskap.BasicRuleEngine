@@ -38,7 +38,7 @@ namespace TestConsoleApp
                 }
 
                 Result = message;
-                State = RuleState.CompletedSuccessfuly;
+                State = RuleState.Completed;
             }
             catch (Exception)
             {
