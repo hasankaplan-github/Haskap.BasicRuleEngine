@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Haskap.BasicRuleEngine
 {
@@ -14,7 +10,7 @@ namespace Haskap.BasicRuleEngine
         object Result { get; }
 
 
-        bool ShouldRun();
-        object Run();
+        Task<bool> ShouldRunAsync();
+        Task<object> RunAsync();
     }
 }

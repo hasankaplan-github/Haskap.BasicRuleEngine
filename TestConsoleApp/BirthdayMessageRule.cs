@@ -24,7 +24,7 @@ namespace TestConsoleApp
             State = RuleState.Initialized;
         }
 
-        public object Run()
+        public async Task<object> RunAsync()
         {
             State = RuleState.InProgress;
 
@@ -42,7 +42,7 @@ namespace TestConsoleApp
             return Result;
         }
 
-        public bool ShouldRun()
+        public async Task<bool> ShouldRunAsync()
         {
             var dateTimeNow = DateTime.Now;
             if (Context.DateOfBirth.Day == dateTimeNow.Day && Context.DateOfBirth.Month == dateTimeNow.Month)

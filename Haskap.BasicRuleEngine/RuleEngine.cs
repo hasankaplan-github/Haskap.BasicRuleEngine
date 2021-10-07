@@ -8,14 +8,14 @@ namespace Haskap.BasicRuleEngine
 {
     public class RuleEngine
     {
-        public void Run<TContext>(params IRule<TContext>[] rules)
+        public async Task RunAsync<TContext>(params IRule<TContext>[] rules)
         {
             var orderedRules = rules.OrderBy(x => x.Priority);
             foreach (var rule in orderedRules)
             {
-                if (rule.ShouldRun())
+                if (await rule.ShouldRunAsync())
                 {
-                    rule.Run();
+                    await rule.RunAsync();
                 }
             }
         }

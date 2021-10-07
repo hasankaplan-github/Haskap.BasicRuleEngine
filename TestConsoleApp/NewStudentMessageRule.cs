@@ -24,7 +24,7 @@ namespace TestConsoleApp
             State = RuleState.Initialized;
         }
 
-        public object Run()
+        public async Task<object> RunAsync()
         {
             State = RuleState.InProgress;
 
@@ -51,7 +51,7 @@ namespace TestConsoleApp
             return Result;
         }
 
-        public bool ShouldRun()
+        public async Task<bool> ShouldRunAsync()
         {
             var shouldRun = true;
 

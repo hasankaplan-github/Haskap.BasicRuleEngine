@@ -12,7 +12,7 @@ namespace TestConsoleApp
             var student = new Student
             {
                 Id = Guid.NewGuid(),
-                DateOfBirth = new DateTime(1984, 10, 6),
+                DateOfBirth = new DateTime(1984, 10, 7),
                 FirstName = "Hasan",
                 LastName = "Kaplan",
                 RegistrationDate = new DateTime(2010, 10, 5)
@@ -26,7 +26,7 @@ namespace TestConsoleApp
             };
 
             var ruleEngine = new RuleEngine();
-            ruleEngine.Run(rules);
+            ruleEngine.RunAsync(rules).GetAwaiter().GetResult();
 
             foreach (var rule in rules.Where(x => x.State == RuleState.Completed))
             {
